@@ -14,21 +14,25 @@ public class ParcelBox<T extends Parcel> {
         this.maxWeight = maxWeight;
     }
 
-    public void addParcel(T parcel) {
+    public boolean addParcel(T parcel) {
         if ((currentWeight + parcel.weight) <= maxWeight) {
             boxList.add(parcel);
+            currentWeight += parcel.weight;
             System.out.println("Посылка успешно добавлена в коробку");
             DeliveryApp.printDivide();
+            return true;
         } else {
-            System.out.println("Превышен максимальный вес посылок в коробке, посылка не добавлена, выберете другую коробку");
+            System.out.println("Превышен максимальный вес посылок в коробке, посылка не добавлена");
             DeliveryApp.printDivide();
+            return false;
         }
     }
 
     public void getAllParcels() {
         System.out.println("Список посылок в коробке:");
         for (T t : boxList) {
-            System.out.println(t.description);
+            System.out.println("---" + t.description);
         }
+        DeliveryApp.printDivide();
     }
 }
