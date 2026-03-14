@@ -16,25 +16,22 @@ public class DeliveryCostTest {
     private final int SEND_DAY = 22;
     private final int TIME_TO_LIVE = 30;
 
-
-
-
     @Test
-    public void shouldCorrectlyCalculatedDeliveryCostForStandardParcel(){
+    public void shouldCorrectlyCalculatedDeliveryCostForStandardParcel() {
         StandardParcel standardParcel = new StandardParcel(DESCRIPTION, WEIGHT, DELIVERY_ADDRESS, SEND_DAY);
 
         assertEquals(10, standardParcel.calculateDeliveryCost(), "Не правильный подсчет стоимости доставки стандартных посылок");
     }
 
     @Test
-    public void shouldCorrectlyCalculatedDeliveryCostForPerishableParcel(){
+    public void shouldCorrectlyCalculatedDeliveryCostForPerishableParcel() {
         PerishableParcel perishableParcel = new PerishableParcel(DESCRIPTION, WEIGHT, DELIVERY_ADDRESS, SEND_DAY, TIME_TO_LIVE);
 
         assertEquals(15, perishableParcel.calculateDeliveryCost(), "Не правильный подсчет стоимости доставки скоропортящихся посылок");
     }
 
     @Test
-    public void shouldCorrectlyCalculatedDeliveryCostForFragileParcel(){
+    public void shouldCorrectlyCalculatedDeliveryCostForFragileParcel() {
         FragileParcel fragileParcel = new FragileParcel(DESCRIPTION, WEIGHT, DELIVERY_ADDRESS, SEND_DAY);
 
         assertEquals(20, fragileParcel.calculateDeliveryCost(), "Не правильный подсчет стоимости доставки хрупких посылок");
